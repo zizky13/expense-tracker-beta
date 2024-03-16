@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
-export default CustomButton = ({ children, onPress }) => {
+export default function LoginButton({children, onPress}) {
     return (
         <View style={styles.buttonOuterContainer}>
             <Pressable
@@ -8,7 +8,7 @@ export default CustomButton = ({ children, onPress }) => {
                 android_ripple={{ color: 'white' }}
                 style={styles.buttonInnerContainer}
             >
-                <Text>{children}</Text>
+                <Text style={styles.innerText}>{children}</Text>
             </Pressable>
         </View>
     );
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'cyan',
         paddingVertical: 8,
         paddingHorizontal: 16,
-        elevation: 1,
+        elevation: 1
     },
 
     buttonText: {
@@ -36,5 +36,9 @@ const styles = StyleSheet.create({
 
     pressed: {
         opacity: 0.75
-    }
+    },
+
+    innerText: {
+        textAlign: 'center',
+    },
 })
