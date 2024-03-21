@@ -40,5 +40,6 @@ const styles = StyleSheet.create({
 
     innerText: {
         textAlign: 'center',
+        fontFamily: 'silk-screen'
     },
 })

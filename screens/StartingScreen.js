@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TextInput, Alert} from "react-native"
+import {View, Text, StyleSheet, TextInput, Alert, Pressable, TouchableOpacity} from "react-native"
 import CustomButton from "../components/CustomButton";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -18,10 +18,6 @@ export default StartingScreen = ({ navigation }) => {
             Alert.alert('Prohibited Login', 'You entered the wrong username or password!', [{ text: "Retry", style: 'cancel' },])
         }
     }
-
-
-
-
     return(
         <View style={styles.container}>
             <View>
@@ -43,6 +39,12 @@ export default StartingScreen = ({ navigation }) => {
             <View>
                 <LoginButton onPress={pressedHandler}>Start!</LoginButton>
             </View>
+            <View style={styles.signUpOuter}>
+                <Text style={styles.signUpDialog}>
+                    Don't have any account?
+                </Text>
+                <TouchableOpacity onPress={() => {navigation.navigate('SignUpScreen')}}><Text style={{fontFamily: 'silk-screen-bold', fontSize: 12}}> Sign up here</Text></TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -60,13 +62,15 @@ const styles = StyleSheet.create({
         fontSize: 36,
         textAlign: 'center',
         color: '#7286D3',
+        fontFamily: 'silk-screen-bold'
     },
 
     subTitleContainer: {
         fontSize: 14,
         textAlign: 'center',
         color: '#7286D3',
-        margin: 8
+        margin: 8,
+        fontFamily: 'silk-screen'
     },
 
     loginBox: {
@@ -78,9 +82,18 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderRadius: 24,
         borderWidth: 1,
-        marginVertical: 5,
+        marginVertical: 5
     },
 
+    signUpOuter: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        margin: 8
+    },
 
+    signUpDialog: {
+        fontSize: 12,
+        fontFamily: 'silk-screen'
+    }
 
 })

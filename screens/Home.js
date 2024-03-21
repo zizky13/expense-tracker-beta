@@ -1,8 +1,5 @@
-import { View, Text, StyleSheet, Button } from "react-native"
+import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native"
 import CustomButton from "../components/CustomButton";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 
 
 function Home ({navigation}){
@@ -11,9 +8,28 @@ function Home ({navigation}){
         {/*=======PERSONAL INFORMATION BOX=======*/ }
         <View style = { styles.personal } >
         {/*=======PUT LEFTBOX INFO BELOW=======*/ }
-            <View style = { styles.personalLeft } >
-                <Text>Hello, world!</Text>
-            </View>
+        {/*    TODO: connect personalCard to signUp screen dan buat data holder di signUp that also passed to here*/}
+            <TouchableOpacity
+                style = { styles.personalLeft }
+                onPress={() => {navigation.navigate('SignUpScreen')}}
+                >
+                <View style={styles.imageContainer}>
+                    <View style={styles.imageWrapper}>
+                        <Image
+                            source={require('../assets/image/pepe.png')}
+                            style={styles.imageSize}/>
+                    </View>
+                    <Text style={styles.headingText}>Jeffrey</Text>
+                </View>
+
+                <View>
+                    <Text style={styles.innerText}>sisa saldo:</Text>
+                    <Text style={styles.innerText}>rp. xx.xxx.xxx.xxx</Text>
+                </View>
+
+            </TouchableOpacity>
+        {/*=======END OF LEFTBOX=======*/ }
+
         {/*=======PUT RIGHTBOX INFO BELOW=======*/ }
             <View style = { styles.personalRight } >
                 <Text>Another hello</Text>
@@ -48,13 +64,15 @@ const styles = StyleSheet.create({
     },
 
     personalLeft: {
-        backgroundColor: 'red',
-        flex: 2
+        padding: 8,
+        borderRadius: 24,
+        backgroundColor: '#7286D3',
+        flex: 3
     },
 
     personalRight: {
         backgroundColor: 'cyan',
-        flex: 3
+        flex: 4
     },
 
     summary: {
@@ -71,5 +89,44 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 5,
         flex: 1
+    },
+
+    imageSize: {
+        height: 60,
+        width:  60,
+    },
+
+    imageContainer: {
+        justifyContent: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 8
+    },
+
+    imageWrapper: {
+        borderWidth: 1,
+        borderColor: 'white',
+        borderRadius: 24,
+        marginHorizontal: 5,
+    },
+
+    personalInfo: {
+        flex:1,
+        marginVertical: 22,
+        padding: 8,
+    },
+
+    headingText: {
+        fontSize: 14,
+        color: 'white',
+        fontFamily: 'silk-screen-bold',
+        marginVertical: 4,
+    },
+
+    innerText: {
+        fontSize: 11,
+        color: 'white',
+        fontFamily: 'silk-screen',
+        textAlign: 'center'
     }
 })
